@@ -18,7 +18,6 @@ end
 
 --- Main
 
-
 local dict = {}
 
 io.input("dict.txt")
@@ -27,10 +26,10 @@ local max = 0
 for word in io.lines() do
     for i = 1, word:len()-1 do
         local currentLetter = Util.getLetterAtIndex(word, i)
-        currentLetter = Util.saninextLetter(currentLetter)
+        currentLetter = Util.sanitizeLetter(currentLetter)
 
         local nextLetter    = Util.getLetterAtIndex(word, i+1)
-        nextLetter = Util.saninextLetter(nextLetter)
+        nextLetter = Util.sanitizeLetter(nextLetter)
 
         if  Util.isLetter(currentLetter) and Util.isLetter(nextLetter) then
             dict[currentLetter] = dict[currentLetter] or {}
