@@ -1,5 +1,9 @@
 
+
+
+-----------
 --- Utils
+-----------
 
 local Util = {}
 
@@ -16,22 +20,30 @@ function Util.isLetter(letter)
 end
 
 
+
+-----------
 --- Main
+-----------
 
 local dict = {}
 
 io.input("dict.txt")
 
+--- Cachign functions
+local isLetter         = Util.isLetter
+local sanitizeLetter   = Util.sanitizeLetter
+local getLetterAtIndex = Util.getLetterAtIndex
+
 local max = 0
 for word in io.lines() do
     for i = 1, word:len()-1 do
-        local currentLetter = Util.getLetterAtIndex(word, i)
-        currentLetter = Util.sanitizeLetter(currentLetter)
+        local currentLetter = getLetterAtIndex(word, i)
+        currentLetter       = sanitizeLetter(currentLetter)
 
-        local nextLetter    = Util.getLetterAtIndex(word, i+1)
-        nextLetter = Util.sanitizeLetter(nextLetter)
+        local nextLetter    = getLetterAtIndex(word, i+1)
+        nextLetter          = sanitizeLetter(nextLetter)
 
-        if  Util.isLetter(currentLetter) and Util.isLetter(nextLetter) then
+        if  isLetter(currentLetter) and isLetter(nextLetter) then
             dict[currentLetter] = dict[currentLetter] or {}
             dict[currentLetter][nextLetter] = (dict[currentLetter][nextLetter] or 0) + 1
             max = max + 1
