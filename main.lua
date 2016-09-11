@@ -1,4 +1,24 @@
 
+--- Utils
+
+local Util = {}
+
+function Util.getLetterAtIndex(word, index)
+    return word:sub(index, index)
+end
+
+function Util.sanitizeLetter(letter)
+    return letter:lower()
+end
+
+function Util.isLetter(letter)
+    return string.byte(letter) >= string.byte("a") and string.byte(letter) <= string.byte("z")
+end
+
+
+--- Main
+
+
 local dict = {}
 
 io.input("dict.txt")
@@ -6,14 +26,13 @@ io.input("dict.txt")
 local max = 0
 for word in io.lines() do
     for i = 1, word:len()-1 do
-        local currentLetter = word:sub(i, i):lower()
-        local nextLetter    = word:sub(i+1, i+1):lower()
+        local currentLetter = Util.getLetterAtIndex(word, i)
+        currentLetter = Util.saninextLetter(currentLetter)
 
-        if  string.byte(currentLetter) >= string.byte("a")
-        and string.byte(currentLetter) <= string.byte("z")
-        and string.byte(nextLetter)    >= string.byte("a")
-        and string.byte(nextLetter)    <= string.byte("z")
-        then
+        local nextLetter    = Util.getLetterAtIndex(word, i+1)
+        nextLetter = Util.saninextLetter(nextLetter)
+
+        if  Util.isLetter(currentLetter) and Util.isLetter(nextLetter) then
             dict[currentLetter] = dict[currentLetter] or {}
             dict[currentLetter][nextLetter] = (dict[currentLetter][nextLetter] or 0) + 1
             max = max + 1
@@ -66,11 +85,11 @@ end
 print(" ")
 
 
-local a = string.byte("a")
-local z = string.byte("z")
-local char = string.char
+-- local a = string.byte("a")
+-- local z = string.byte("z")
+-- local char = string.char
 
-local len = math.random(3, 8)
+-- local len = math.random(3, 8)
 
 -- local word = "" .. char(math.random(a, z))
 -- for index = 2, len do
