@@ -17,6 +17,14 @@ This table is then used as a basis for the creation process of a word.
 
 -----
 
+## Running
+
+In order to run this program, you need lua 5.2 installed. To run the program, simply type in a terminal, located on the base folder of the reposity:
+
+    lua main.lua
+
+-----
+
 ## Future Work
 
 There is a lot to be done. Further improvements of the analysis algorithm and the creation process must be performed. I would also like to create a machine learning process to improve the process provided sufficient time to develop such feature.
