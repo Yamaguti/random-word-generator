@@ -72,13 +72,13 @@ local char = string.char
 
 local len = math.random(3, 8)
 
-local word = "" .. char(math.random(a, z))
-for index = 2, len do
-    local last = index-1
-    local lastLetter = word:sub(last, last)
+-- local word = "" .. char(math.random(a, z))
+-- for index = 2, len do
+--     local last = index-1
+--     local lastLetter = word:sub(last, last)
 
-    local letter =
-    word = word + letter
-end
+--     local letter =
+--     word = word + letter
+-- end
 
-print word
+-- print word
